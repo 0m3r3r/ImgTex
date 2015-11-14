@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>bc0e7dbe-c300-42dc-87d9-7f143116478d</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ImgTex</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Com\Manager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Language.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Senaryo_ExtractText.xaml.cs">
+      <DependentUpon>Senaryo_ExtractText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Translate.xaml.cs">
+      <DependentUpon>Translate.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\mediumtile-sdk.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\microsoft-sdk.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\smalltile-Phone-sdk.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\smalltile-Windows-sdk.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\splash-Phone-sdk.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\splash-Windows-sdk.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\squaretile-sdk.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\storelogo-sdk.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\tile-sdk.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\windows-sdk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Senaryo_ExtractText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Translate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="ImgTex.ExtractText"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ImgTex"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid RenderTransformOrigin="0.507,0.517">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="9,3" StartPoint="0.5,0">
+                <GradientStop Color="#FF2E4B5E" Offset="1"/>
+                <GradientStop Color="#FF183A52" Offset="0.044"/>
+                <GradientStop Color="#FF0A1622" Offset="0.103"/>
+                <GradientStop Color="#FF2D495B" Offset="0.396"/>
+                <GradientStop Color="#FF122738"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid x:Name="RootGrid" Margin="1,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+           
+            <StackPanel x:Name="ControlPanel" Grid.Row="1" Orientation="Vertical">
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,0" >
+                    <ComboBox x:Name="LanguageList" Margin="3,0,-16,0" IsEnabled="False" RenderTransformOrigin="0.514,0.574" Width="308"/>
+                    <!--<Button x:Name="dd" Content="Aç" MinWidth="90" Click="Load_Click" Margin="0,0,5,0"/>-->
+                    <!--<Button x:Name="SampleButton" Content="Örnek" MinWidth="90" Click="Sample_Click" Margin="0,0,5,0"/>-->
+                    <!--<Button x:Name="ExtractTex" Content="Oku" MinWidth="90" Click="ExtractTex_Click" IsEnabled="False" Margin="0,0,5,0"/>-->
+
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="2" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0, 10, 0, 0">
+                <!-- This StackPanel changes its Orientation depending on the available width of the window. -->
+                <StackPanel x:Name="Output" Orientation="Vertical" Visibility="Visible">
+
+                    <StackPanel x:Name="Content" Orientation="Vertical" Visibility="Visible">
+
+                        <Grid x:Name="Image" HorizontalAlignment="Center">
+                            <Image x:Name="PreviewImage" Margin="0,0,1,10" AutomationProperties.Name="Preview of the image" Source="" Stretch="Uniform" VerticalAlignment="Top"/>
+                            <Grid x:Name="TextOverlay" Margin="0,0,10,10" AutomationProperties.Name="Preview of the image" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </Grid>
+
+                        <!-- This StackPanel contains all of the image properties output. -->
+                        <Grid x:Name="Result" VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Style="{StaticResource BasicTextStyle}" >Okunan Metin:</TextBlock>
+                            <TextBlock Name="ImageText" Grid.Row="1" Style="{StaticResource YellowTextStyle}" TextAlignment="Justify" IsTextSelectionEnabled="True" AllowDrop="True" RenderTransformOrigin="0.5,0.5" TextLineBounds="TrimToCapHeight" TextWrapping="WrapWholeWords">
+                                <TextBlock.RenderTransform>
+                                    <CompositeTransform/>
+                                </TextBlock.RenderTransform>Metin Okunabilir Değil.</TextBlock>
+
+
+                        </Grid>
+                        <TextBox x:Name="ImageTextbox"  TextWrapping="Wrap" Text="Düzenleme" Grid.Row="1" BorderThickness="1">
+                            <TextBox.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFCFCFC" Offset="0"/>
+                                    <GradientStop Color="#FFF3F0C2" Offset="0.524"/>
+                                    <GradientStop Color="#FFF2F7FB" Offset="0.997"/>
+                                </LinearGradientBrush>
+                            </TextBox.Background>
+                        </TextBox>
+
+
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+
+        </Grid>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar MinHeight="90">
+            <AppBarButton x:Name="LoadButton" HorizontalAlignment="Stretch" Label="Ekle" VerticalAlignment="Stretch" Click="LoadButton_Click" Margin="-8,0" FontWeight="Bold" Foreground="#FFFFFE00" BorderBrush="{ThemeResource CheckBoxPressedBackgroundThemeBrush}" Background="#FF2C8DC8">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="AttachCamera" UseLayoutRounding="True" Margin="0"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarToggleButton x:Name="ExtractTextButton" HorizontalAlignment="Stretch" Icon="Font" Label="Oku" VerticalAlignment="Stretch" Click="ExtractTextButton_Click" IsEnabled="False" FontWeight="Bold" BorderThickness="0" Margin="-8,0"/>
+         
+            
+            <AppBarToggleButton x:Name="OverlayResults" HorizontalAlignment="Stretch" Icon="Accept" Label="Seç" VerticalAlignment="Stretch" IsChecked="True" Click="OverlayResults_Click" FontWeight="Bold" Margin="0,0,-8,0"/>
+            <AppBarToggleButton x:Name="Translato" HorizontalAlignment="Stretch" Icon="Character" Label="Çeviri" VerticalAlignment="Stretch" Click="Translato_Click" FontWeight="Bold" Margin="-8,0" IsEnabled="False"/>
+            <CommandBar.SecondaryCommands>
+               
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

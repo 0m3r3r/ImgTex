@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="ImgTex.Translate" 
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ImgTex"
+    xmlns:Translator="using:Bing.Translator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+        <Translator:TranslatorControl x:Name="Translator2" 
+            ClientId="YourClientID" 
+            ClientSecret="YourClientSecret" 
+             LanguageFrom="" LanguageTo="{Binding ElementName=GetLanguagesForTranslate, Path=SelectedValue}" FontFamily="Global User Interface"/>
+
+        <!--Bind the text input box to the TextToTranslate property with a two-way binding so user input sets the property.-->
+        <TextBox Text="{Binding TextToTranslate, ElementName=Translator2, Mode=TwoWay}"    HorizontalAlignment="Left" Margin="397,334,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="65" Width="540" x:Name="textbox1"/>
+
+        <!--Bind the text output box to the TextTranslated property.-->
+        <TextBox Text="{Binding TextTranslated, ElementName=Translator2}"                  HorizontalAlignment="Left" Margin="397,420,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="54" Width="540"/>
+        <TextBox Text="{Binding ErrorCode, ElementName=Translator2}"                       HorizontalAlignment="Left" Margin="397,494,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="0" Width="93"/>
+
+        <!--Selecting a value in the ComboBox causes the langauge name in LangTextBox to refresh.-->
+        <ComboBox x:Name="GetLanguagesForTranslate" HorizontalAlignment="Left" Margin="398,264,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="GetLanguagesForTranslate_SelectionChanged"/>
+        <TextBox x:Name="LangTextBox" HorizontalAlignment="Left" Margin="622,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="397,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+        	<Run Text="Step2: Enter Text to translate"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="397,407,0,0" TextWrapping="Wrap" Text="Result: Text Translated" VerticalAlignment="Top" RenderTransformOrigin="-1.111,-2.308"/>
+        <TextBlock HorizontalAlignment="Left" Margin="397,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+        	<Run Text="ErrorCode"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="398,246,0,0" TextWrapping="Wrap" Text="Step1: Select a language" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Page>
